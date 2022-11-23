@@ -1,3 +1,4 @@
+import 'package:empleo_jah/src/pages/loginpage.dart';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
@@ -23,6 +24,15 @@ class _VistaAdminPageState extends State<VistaAdminPage> {
       appBar: AppBar(
         title: Text('Bolsa de Empleo UT-Tlaxcala'),
         automaticallyImplyLeading: false,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => LoginPage()));
+            },
+          ),
+        ],
       ),
       body: ListView(children: <Widget>[
         Card(
