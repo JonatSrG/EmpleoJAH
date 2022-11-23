@@ -1,0 +1,5 @@
+Scripts:{
+inicio del servidor: npm run dev,
+monitoreo de servidor (Errores): npm run build
+
+}
