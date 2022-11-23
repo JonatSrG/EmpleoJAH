@@ -51,7 +51,7 @@ class _EditDataState extends State<EditData> {
             new Column(
               children: <Widget>[
                 new ListTile(
-                  leading: const Icon(Icons.person, color: Colors.black),
+                  leading: const Icon(Icons.person, color: Colors.orange),
                   title: new TextFormField(
                     controller: controllerUsername,
                     validator: (value) {
@@ -64,7 +64,7 @@ class _EditDataState extends State<EditData> {
                   ),
                 ),
                 new ListTile(
-                  leading: const Icon(Icons.location_on, color: Colors.black),
+                  leading: const Icon(Icons.lock_outline, color: Colors.orange),
                   title: new TextFormField(
                     controller: controllerPassword,
                     validator: (value) {
@@ -78,7 +78,7 @@ class _EditDataState extends State<EditData> {
                 ),
                 new ListTile(
                   leading: const Icon(Icons.settings_input_component,
-                      color: Colors.black),
+                      color: Colors.orange),
                   title: new TextFormField(
                     controller: controllerRole,
                     validator: (value) {
@@ -98,7 +98,7 @@ class _EditDataState extends State<EditData> {
                 ),
                 new RaisedButton(
                   child: new Text("Guardar"),
-                  color: Colors.blueAccent,
+                  color: Colors.green,
                   onPressed: () {
                     editData();
                     Navigator.of(context).push(new MaterialPageRoute(

@@ -1,3 +1,4 @@
+import 'package:empleo_jah/src/pages/addData.dart';
 import 'package:empleo_jah/src/pages/detail.dart';
 import 'package:flutter/material.dart';
 
@@ -21,12 +22,21 @@ class _VistaHoracioState extends State<VistaHoracio> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Bolsa de Empleo UT-Tlaxcala'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () {},
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: Icon(
+          Icons.add,
+        ),
+        backgroundColor: Colors.green,
         onPressed: () {
-          /*  Navigator.push(
-              context, MaterialPageRoute(builder: (context) => addData())); */
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => AddData()));
         },
       ),
       body: FutureBuilder<List>(
