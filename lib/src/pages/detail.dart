@@ -1,3 +1,4 @@
+import 'package:empleo_jah/src/pages/editdata.dart';
 import 'package:empleo_jah/src/pages/vistaHoracio.dart';
 import 'package:flutter/material.dart';
 
@@ -85,17 +86,18 @@ class _DetailState extends State<Detail> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     new RaisedButton(
-                        child: new Text("EDITAR"),
-                        color: Colors.blueAccent,
-                        shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(30.0)),
-                        onPressed:
-                            () {} /* Navigator.of(context).push(
-                        new MaterialPageRoute(
-                          builder: (BuildContext context)=>new EditData(list: widget.list, index: widget.index,),
-                        )
-                      ),            */
+                      child: new Text("EDITAR"),
+                      color: Colors.blueAccent,
+                      shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0)),
+                      onPressed: () =>
+                          Navigator.of(context).push(new MaterialPageRoute(
+                        builder: (BuildContext context) => EditData(
+                          list: widget.list,
+                          index: widget.index,
                         ),
+                      )),
+                    ),
                     VerticalDivider(),
                     new RaisedButton(
                       child: new Text("ELIMINAR"),
