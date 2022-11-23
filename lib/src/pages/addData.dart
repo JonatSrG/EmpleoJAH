@@ -1,3 +1,4 @@
+import 'package:empleo_jah/src/pages/vistaHoracio.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -37,6 +38,7 @@ class _AddDataState extends State<AddData> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Nuevo Usuario"),
+        automaticallyImplyLeading: false,
       ),
       body: Form(
         key: _formKey,
@@ -126,7 +128,10 @@ class _AddDataState extends State<AddData> {
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         addData();
-                        Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => VistaHoracio()));
                       }
                     },
                   ),

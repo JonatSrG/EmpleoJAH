@@ -44,6 +44,7 @@ class _VistaAlumnoPageState extends State<VistaAlumnoPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Bolsa de Empleo UT-Tlaxcala'),
+        automaticallyImplyLeading: false,
       ),
       body: ListView(children: <Widget>[
         Card(

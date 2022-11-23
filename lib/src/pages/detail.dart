@@ -55,7 +55,9 @@ class _DetailState extends State<Detail> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-          title: new Text("${widget.list[widget.index]['username']}")),
+        title: new Text("${widget.list[widget.index]['username']}"),
+        automaticallyImplyLeading: false,
+      ),
       body: new Container(
         height: 270.0,
         padding: const EdgeInsets.all(20.0),

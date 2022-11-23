@@ -1,5 +1,6 @@
 import 'package:empleo_jah/src/pages/addData.dart';
 import 'package:empleo_jah/src/pages/detail.dart';
+import 'package:empleo_jah/src/pages/loginpage.dart';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
@@ -17,15 +18,23 @@ class _VistaHoracioState extends State<VistaHoracio> {
     return json.decode(response.body);
   }
 
+  Future<void> onRefresh() async {
+    await Future.delayed(const Duration(seconds: 2));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Bolsa de Empleo UT-Tlaxcala'),
+        automaticallyImplyLeading: false,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.logout),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => LoginPage()));
+            },
           ),
         ],
       ),
@@ -39,18 +48,21 @@ class _VistaHoracioState extends State<VistaHoracio> {
               context, MaterialPageRoute(builder: (context) => AddData()));
         },
       ),
-      body: FutureBuilder<List>(
-        future: getData(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) print(snapshot.error);
-          return snapshot.hasData
-              ? new ItemList(
-                  list: snapshot.data,
-                )
-              : Center(
-                  child: CircularProgressIndicator(),
-                );
-        },
+      body: RefreshIndicator(
+        onRefresh: onRefresh,
+        child: FutureBuilder<List>(
+          future: getData(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) print(snapshot.error);
+            return snapshot.hasData
+                ? new ItemList(
+                    list: snapshot.data,
+                  )
+                : Center(
+                    child: CircularProgressIndicator(),
+                  );
+          },
+        ),
       ),
     );
   }
@@ -60,47 +72,54 @@ class ItemList extends StatelessWidget {
   final List list;
   ItemList({this.list});
 
+  Future<void> onRefresh() async {
+    await Future.delayed(const Duration(seconds: 2));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: list == null ? 0 : list.length,
-      itemBuilder: (context, i) {
-        return Container(
-          padding: EdgeInsets.all(10),
-          child: GestureDetector(
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => Detail(
-                        list: list,
-                        index: i,
-                      )),
-            ),
-            child: Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
-              margin: EdgeInsets.all(10),
-              elevation: 10,
-              child: ListTile(
-                contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
-                title: Text(
-                  list[i]['username'],
-                  style: TextStyle(fontSize: 25.0),
-                ),
-                leading: Icon(
-                  Icons.person,
-                  size: 77.0,
-                  color: Colors.orangeAccent,
-                ),
-                subtitle: Text(
-                  "Role : ${list[i]['role']}",
-                  style: TextStyle(fontSize: 20.0),
+    return RefreshIndicator(
+      onRefresh: onRefresh,
+      child: ListView.builder(
+        itemCount: list == null ? 0 : list.length,
+        itemBuilder: (context, i) {
+          return Container(
+            padding: EdgeInsets.all(10),
+            child: GestureDetector(
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Detail(
+                          list: list,
+                          index: i,
+                        )),
+              ),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                margin: EdgeInsets.all(10),
+                elevation: 10,
+                child: ListTile(
+                  contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+                  title: Text(
+                    list[i]['username'],
+                    style: TextStyle(fontSize: 25.0),
+                  ),
+                  leading: Icon(
+                    Icons.person,
+                    size: 77.0,
+                    color: Colors.orangeAccent,
+                  ),
+                  subtitle: Text(
+                    "Role : ${list[i]['role']}",
+                    style: TextStyle(fontSize: 20.0),
+                  ),
                 ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

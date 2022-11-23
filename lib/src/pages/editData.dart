@@ -43,6 +43,7 @@ class _EditDataState extends State<EditData> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("EDITAR USER"),
+        automaticallyImplyLeading: false,
       ),
       body: Form(
         child: ListView(

@@ -22,6 +22,7 @@ class _VistaAdminPageState extends State<VistaAdminPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Bolsa de Empleo UT-Tlaxcala'),
+        automaticallyImplyLeading: false,
       ),
       body: ListView(children: <Widget>[
         Card(
