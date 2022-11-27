@@ -1,3 +1,5 @@
+import 'package:empleo_jah/src/pages/detalleVacantePage.dart';
+import 'package:empleo_jah/src/pages/agregarVacantePage.dart';
 import 'package:empleo_jah/src/pages/loginpage.dart';
 import 'package:flutter/material.dart';
 
@@ -11,10 +13,9 @@ class VistaAdminPage extends StatefulWidget {
 }
 
 class _VistaAdminPageState extends State<VistaAdminPage> {
-  Future<List> getData() async {
-    final response =
-        await http.get('http://172.31.201.197/empleo/getdata1.php');
-    //await http.post('http://192.168.0.105/empleo/getdata1.php');
+  //Metodo que llama el get de vacante
+  Future<List> obtenerVacante() async {
+    final response = await http.get('http://192.168.0.105/empleo/getdata1.php');
     return json.decode(response.body);
   }
 
@@ -34,60 +35,71 @@ class _VistaAdminPageState extends State<VistaAdminPage> {
           ),
         ],
       ),
-      body: ListView(children: <Widget>[
-        Card(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          margin: EdgeInsets.all(15),
-          elevation: 10,
-          child: Column(
-            children: <Widget>[
-              GestureDetector(
-                child: Image.asset(
-                  'assets/it-global.jpg',
-                  fit: BoxFit.cover, // Fixes border issues
-                  width: 200,
-                  height: 200,
+      body: FutureBuilder<List>(
+        future: obtenerVacante(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) print(snapshot.error);
+          return snapshot.hasData
+              ? ElementoLista(
+                  lista: snapshot.data,
+                )
+              : Center(
+                  child: CircularProgressIndicator(),
+                );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        backgroundColor: Colors.green,
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute(
+              builder: (BuildContext context) => new AgregarVacante()),
+        ),
+      ),
+    );
+  }
+}
+
+class ElementoLista extends StatelessWidget {
+  final List lista;
+
+  ElementoLista({this.lista});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: lista == null ? 0 : lista.length,
+      itemBuilder: (context, posicion) {
+        return Container(
+          padding: EdgeInsets.all(2.0),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => DetallesVacante(
+                    index: posicion,
+                    lista: lista,
+                  ),
                 ),
-              ),
-              ListTile(
-                contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
-                title: Text('IT Global'),
-                subtitle: Text(
-                  'Enviar CV a IT-Global o Presentarse en Av Pensamientos #14 Apizaco,Tlaxcala con un horario de 10am a 6pm \n comunicate: 1234567890 \n email: ItGlobal@gmail.com \n Direccion: Av. Pensamientos #14 Apizaco, Tlaxcala',
+              );
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                margin: EdgeInsets.all(10),
+                elevation: 10,
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                    lista[posicion]['id'] + ": " + lista[posicion]['empresa'],
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.white),
+                  ),
                 ),
-                leading: Icon(Icons.quick_contacts_mail_rounded),
-              ),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    MaterialButton(
-                      minWidth: 100.0,
-                      elevation: 10,
-                      height: 30.0,
-                      onPressed: () {},
-                      color: Colors.orange[400],
-                      child: Text(
-                        'Editar',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                    MaterialButton(
-                      minWidth: 100.0,
-                      elevation: 10,
-                      height: 30.0,
-                      onPressed: () {},
-                      color: Colors.red[400],
-                      child: Text(
-                        'Eliminar',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ]),
-            ],
+              );
+            },
           ),
-        )
-      ]),
+        );
+      },
     );
   }
 }
