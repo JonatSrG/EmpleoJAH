@@ -34,9 +34,8 @@ class _DetailState extends State<Detail> {
           color: Colors.red,
           onPressed: () {
             dataDelete();
-            Navigator.of(context).push(new MaterialPageRoute(
-              builder: (BuildContext context) => new VistaHoracio(),
-            ));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => VistaHoracio()));
           },
         ),
         new RaisedButton(
@@ -88,18 +87,17 @@ class _DetailState extends State<Detail> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     new RaisedButton(
-                      child: new Text("EDITAR"),
-                      color: Colors.blueAccent,
-                      shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0)),
-                      onPressed: () =>
-                          Navigator.of(context).push(new MaterialPageRoute(
-                        builder: (BuildContext context) => EditData(
-                          list: widget.list,
-                          index: widget.index,
-                        ),
-                      )),
-                    ),
+                        child: new Text("EDITAR"),
+                        color: Colors.blueAccent,
+                        shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(30.0)),
+                        onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => EditData(
+                                      list: widget.list,
+                                      index: widget.index,
+                                    )))),
                     VerticalDivider(),
                     new RaisedButton(
                       child: new Text("ELIMINAR"),

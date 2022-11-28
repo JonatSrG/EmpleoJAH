@@ -102,8 +102,10 @@ class _EditDataState extends State<EditData> {
                   color: Colors.green,
                   onPressed: () {
                     dataEdit();
-                    Navigator.of(context).push(new MaterialPageRoute(
-                        builder: (BuildContext context) => VistaHoracio()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => VistaHoracio()));
                   },
                 )
               ],

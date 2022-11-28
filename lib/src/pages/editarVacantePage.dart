@@ -1,3 +1,4 @@
+import 'package:empleo_jah/src/pages/vistaAdminPage.dart';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
@@ -23,7 +24,7 @@ class _EditarVacantePageState extends State<EditarVacantePage> {
   TextEditingController controllerImage;
 
   void editarVacante() {
-    var url = "http://192.168.0.108/empleo/.php";
+    var url = "http://192.168.0.108/empleo/editvacante.php";
     http.post(url, body: {
       'id': widget.lista[widget.index]['id'],
       'titulo': controllerTitulo.text,
@@ -115,6 +116,88 @@ class _EditarVacantePageState extends State<EditarVacantePage> {
                     ),
                   ),
                 ),
+                Padding(padding: EdgeInsets.all(10)),
+                ListTile(
+                  leading: Icon(Icons.menu, color: Colors.orange),
+                  title: TextFormField(
+                    controller: controllerTelefono,
+                    validator: (value) {
+                      if (value.isEmpty) return "Ingresa Nom. Empresa";
+                    },
+                    decoration: InputDecoration(
+                      hintText: "Nom. de la Empresa",
+                      labelText: "Nom. de la Empresa",
+                    ),
+                  ),
+                ),
+                Padding(padding: EdgeInsets.all(10)),
+                ListTile(
+                  leading: Icon(Icons.menu, color: Colors.orange),
+                  title: TextFormField(
+                    controller: controllerCorreo,
+                    validator: (value) {
+                      if (value.isEmpty) return "Ingresa un Correo";
+                    },
+                    decoration: InputDecoration(
+                      hintText: "Correo",
+                      labelText: "Correo",
+                    ),
+                  ),
+                ),
+                Padding(padding: EdgeInsets.all(10)),
+                ListTile(
+                  leading: Icon(Icons.menu, color: Colors.orange),
+                  title: TextFormField(
+                    controller: controllerDireccion,
+                    validator: (value) {
+                      if (value.isEmpty) return "Ingresa una Direccion";
+                    },
+                    decoration: InputDecoration(
+                      hintText: "Direccion",
+                      labelText: "Direccion",
+                    ),
+                  ),
+                ),
+                Padding(padding: EdgeInsets.all(10)),
+                ListTile(
+                  leading: Icon(Icons.menu, color: Colors.orange),
+                  title: TextFormField(
+                    controller: controllerNombreRH,
+                    validator: (value) {
+                      if (value.isEmpty) return "Ingresa un Nombre";
+                    },
+                    decoration: InputDecoration(
+                      hintText: "NombreRH",
+                      labelText: "NombreRH",
+                    ),
+                  ),
+                ),
+                Padding(padding: EdgeInsets.all(10)),
+                ListTile(
+                  leading: Icon(Icons.menu, color: Colors.orange),
+                  title: TextFormField(
+                    controller: controllerImage,
+                    validator: (value) {
+                      if (value.isEmpty) return "Ingresa un URL";
+                    },
+                    decoration: InputDecoration(
+                      hintText: "URL de Image",
+                      labelText: "URL de Image",
+                    ),
+                  ),
+                ),
+                Padding(padding: EdgeInsets.all(10)),
+                RaisedButton(
+                  child: new Text("Guardar"),
+                  color: Colors.green,
+                  onPressed: () {
+                    editarVacante();
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => VistaAdminPage()));
+                  },
+                )
               ],
             ),
           ],
