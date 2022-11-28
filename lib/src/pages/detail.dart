@@ -13,7 +13,7 @@ class Detail extends StatefulWidget {
 }
 
 class _DetailState extends State<Detail> {
-  void deleteData() {
+  void dataDelete() {
     var url = "http://192.168.0.108/empleo/deleteData.php";
     http.post(url, body: {'id': widget.list[widget.index]['id']});
   }
@@ -33,7 +33,7 @@ class _DetailState extends State<Detail> {
           ),
           color: Colors.red,
           onPressed: () {
-            deleteData();
+            dataDelete();
             Navigator.of(context).push(new MaterialPageRoute(
               builder: (BuildContext context) => new VistaHoracio(),
             ));

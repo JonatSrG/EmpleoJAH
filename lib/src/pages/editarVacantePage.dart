@@ -23,7 +23,7 @@ class _EditarVacantePageState extends State<EditarVacantePage> {
   TextEditingController controllerImage;
 
   void editarVacante() {
-    var url = "http://192.168.0.108/empleo/editdata1.php";
+    var url = "http://192.168.0.108/empleo/.php";
     http.post(url, body: {
       'id': widget.lista[widget.index]['id'],
       'titulo': controllerTitulo.text,
@@ -96,6 +96,22 @@ class _EditarVacantePageState extends State<EditarVacantePage> {
                     decoration: InputDecoration(
                       hintText: 'Descripcion',
                       labelText: 'Descripcion',
+                    ),
+                  ),
+                ),
+                Padding(padding: EdgeInsets.all(10)),
+                ListTile(
+                  leading: Icon(Icons.menu, color: Colors.orange),
+                  title: TextFormField(
+                    controller: controllerEmpresa,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "Ingresa nombre de la empresa";
+                      }
+                    },
+                    decoration: InputDecoration(
+                      hintText: 'Nombre de la Empresa',
+                      labelText: 'Nombre de la Empresa',
                     ),
                   ),
                 ),

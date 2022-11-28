@@ -17,7 +17,7 @@ class _EditDataState extends State<EditData> {
   TextEditingController controllerPassword;
   TextEditingController controllerRole;
 
-  void editData() {
+  void dataEdit() {
     var url = "http://192.168.0.108/empleo/editdata.php";
     http.post(url, body: {
       "id": widget.list[widget.index]['id'],
@@ -101,7 +101,7 @@ class _EditDataState extends State<EditData> {
                   child: new Text("Guardar"),
                   color: Colors.green,
                   onPressed: () {
-                    editData();
+                    dataEdit();
                     Navigator.of(context).push(new MaterialPageRoute(
                         builder: (BuildContext context) => VistaHoracio()));
                   },

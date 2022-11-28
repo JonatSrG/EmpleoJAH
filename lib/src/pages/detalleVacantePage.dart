@@ -17,7 +17,7 @@ class DetallesVacante extends StatefulWidget {
 
 class _DetallesVacanteState extends State<DetallesVacante> {
   void deleteData() {
-    var url = "http://192.168.0.108/empleo/deleteData1.php";
+    var url = "http://192.168.0.108/empleo/deletevacante.php";
     http.post(url, body: {'id': widget.lista[widget.index]['id']});
   }
 
@@ -62,7 +62,7 @@ class _DetallesVacanteState extends State<DetallesVacante> {
         automaticallyImplyLeading: false,
       ),
       body: Container(
-        height: 400,
+        height: 500,
         padding: const EdgeInsets.all(20.0),
         child: new Card(
           shape:
