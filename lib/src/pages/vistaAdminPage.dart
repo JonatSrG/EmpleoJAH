@@ -15,7 +15,7 @@ class VistaAdminPage extends StatefulWidget {
 class _VistaAdminPageState extends State<VistaAdminPage> {
   //Metodo que llama el get de vacante
   Future<List> obtenerVacante() async {
-    final response = await http.get('http://192.168.0.105/empleo/getdata1.php');
+    final response = await http.get('http://192.168.0.108/empleo/getdata1.php');
     return json.decode(response.body);
   }
 
@@ -40,7 +40,7 @@ class _VistaAdminPageState extends State<VistaAdminPage> {
         builder: (context, snapshot) {
           if (snapshot.hasError) print(snapshot.error);
           return snapshot.hasData
-              ? ElementoLista(
+              ? new ElementoLista(
                   lista: snapshot.data,
                 )
               : Center(
@@ -68,38 +68,38 @@ class ElementoLista extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: lista == null ? 0 : lista.length,
-      itemBuilder: (context, posicion) {
-        return Container(
-          padding: EdgeInsets.all(2.0),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.of(context).push(
+        itemCount: lista == null ? 0 : lista.length,
+        itemBuilder: (context, posicion) {
+          return Container(
+            padding: EdgeInsets.all(10.0),
+            child: GestureDetector(
+              onTap: () => Navigator.push(
+                context,
                 MaterialPageRoute(
-                  builder: (BuildContext context) => DetallesVacante(
-                    index: posicion,
-                    lista: lista,
-                  ),
-                ),
-              );
-              Card(
+                    builder: (context) => DetallesVacante(
+                          lista: lista,
+                          index: posicion,
+                        )),
+              ),
+              child: Card(
+                color: Colors.lightGreen,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
                 margin: EdgeInsets.all(10),
                 elevation: 10,
-                child: Container(
-                  padding: EdgeInsets.all(10),
+                child: new Container(
+                  padding: EdgeInsets.all(10.0),
                   child: Text(
                     lista[posicion]['id'] + ": " + lista[posicion]['empresa'],
                     style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.white),
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 20),
                   ),
                 ),
-              );
-            },
-          ),
-        );
-      },
-    );
+              ),
+            ),
+          );
+        });
   }
 }

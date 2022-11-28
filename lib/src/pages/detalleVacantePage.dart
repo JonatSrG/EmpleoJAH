@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
+import 'package:empleo_jah/src/pages/VistaAdminPage.dart';
+import 'package:empleo_jah/src/pages/EditarVacantePage.dart';
+
 import 'package:http/http.dart' as http;
 
 class DetallesVacante extends StatefulWidget {
 //Arreglo
-  int index;
   List lista;
+  int index;
 
   DetallesVacante({this.index, this.lista});
   @override
@@ -13,6 +16,44 @@ class DetallesVacante extends StatefulWidget {
 }
 
 class _DetallesVacanteState extends State<DetallesVacante> {
+  void deleteData() {
+    var url = "http://192.168.0.108/empleo/deleteData1.php";
+    http.post(url, body: {'id': widget.lista[widget.index]['id']});
+  }
+
+  void confirm() {
+    AlertDialog alertDialog = new AlertDialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      contentPadding: EdgeInsets.all(15),
+      elevation: 20,
+      content: new Text(
+          "Esta seguto de eliminar '${widget.lista[widget.index]['empresa']}'"),
+      actions: <Widget>[
+        new RaisedButton(
+          child: new Text(
+            "Eliminar",
+            style: new TextStyle(color: Colors.black),
+          ),
+          color: Colors.red,
+          onPressed: () {
+            deleteData();
+            Navigator.of(context).push(new MaterialPageRoute(
+              builder: (BuildContext context) => new VistaAdminPage(),
+            ));
+          },
+        ),
+        new RaisedButton(
+          child:
+              new Text("CANCELAR", style: new TextStyle(color: Colors.black)),
+          color: Colors.green,
+          onPressed: () => Navigator.pop(context),
+        ),
+      ],
+    );
+
+    showDialog(context: context, child: alertDialog);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,68 +61,86 @@ class _DetallesVacanteState extends State<DetallesVacante> {
         title: Text('Detalles de la vacante'),
         automaticallyImplyLeading: false,
       ),
-      body: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        margin: EdgeInsets.all(10),
-        elevation: 10,
-        child: Column(
-          children: <Widget>[
-            new Text(
-              "ID Vacante: " + widget.lista[widget.index]['id'],
-              style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-            ),
-            new Text(
-              "Titulo: " + widget.lista[widget.index]['titulo'],
-              style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            new Text(
-              "Descripcion: " + widget.lista[widget.index]['descripcion'],
-              style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-            ),
-            new Text(
-              "Empresa: " + widget.lista[widget.index]['empresa'],
-              style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-            ),
-            new Text(
-              "Telefono: " + widget.lista[widget.index]['telefono'],
-              style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-            ),
-            new Text(
-              "Correo: " + widget.lista[widget.index]['correo'],
-              style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-            ),
-            new Text(
-              "Direccion: " + widget.lista[widget.index]['direccion'],
-              style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+      body: Container(
+        height: 400,
+        padding: const EdgeInsets.all(20.0),
+        child: new Card(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          margin: EdgeInsets.all(10),
+          elevation: 10,
+          child: Center(
+            child: Column(
               children: <Widget>[
-                MaterialButton(
-                  minWidth: 100.0,
-                  elevation: 10,
-                  height: 30.0,
-                  onPressed: () {},
-                  color: Colors.orange[400],
-                  child: Text(
-                    'Editar',
-                    style: TextStyle(color: Colors.white),
+                ListTile(
+                  contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+                  title: Text(
+                    "Titulo: " + widget.lista[widget.index]['titulo'] + "\n",
+                    style: new TextStyle(
+                        fontWeight: FontWeight.w400, fontSize: 18),
+                  ),
+                  subtitle: Text(
+                    "Descripcion: " +
+                        widget.lista[widget.index]['descricion'] +
+                        "\n" +
+                        "\n" +
+                        "Empresa: " +
+                        widget.lista[widget.index]['empresa'] +
+                        "\n" +
+                        "Telefono: " +
+                        widget.lista[widget.index]['telefono'] +
+                        "\n" +
+                        "Correo: " +
+                        widget.lista[widget.index]['correo'] +
+                        "\n" +
+                        "Dirección: " +
+                        widget.lista[widget.index]['direccion'] +
+                        "\n" +
+                        "RH: " +
+                        widget.lista[widget.index]['nombrerh'] +
+                        "\n",
+                    style: new TextStyle(
+                        fontWeight: FontWeight.w400, fontSize: 18),
                   ),
                 ),
-                MaterialButton(
-                  minWidth: 100.0,
-                  elevation: 10,
-                  height: 30.0,
-                  onPressed: () {},
-                  color: Colors.red[400],
-                  child: Text(
-                    'Eliminar',
-                    style: TextStyle(color: Colors.white),
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    MaterialButton(
+                      minWidth: 100.0,
+                      elevation: 10,
+                      height: 30.0,
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => EditarVacantePage(
+                            lista: widget.lista,
+                            index: widget.index,
+                          ),
+                        ),
+                      ),
+                      color: Colors.orange[400],
+                      child: Text(
+                        'Editar',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    MaterialButton(
+                      minWidth: 100.0,
+                      elevation: 10,
+                      height: 30.0,
+                      onPressed: () => confirm(),
+                      color: Colors.red[400],
+                      child: Text(
+                        'Eliminar',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );
