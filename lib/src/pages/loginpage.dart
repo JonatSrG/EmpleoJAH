@@ -22,10 +22,6 @@ class _LoginPageState extends State<LoginPage> {
   Future<List> login() async {
     final response =
         await http.post('http://192.168.0.108/empleo/login.php', body: {
-      //ip de red de mi casa
-      //await http.post('http://192.168.137.89/empleo/login.php', body: { //ip de astrid de su lap
-      //await http.post('http://192.168.85.110/empleo/login.php', body: {
-      //ip de telefono de astrid
       "username": controllerUser.text,
       "password": controllerPass.text,
     });

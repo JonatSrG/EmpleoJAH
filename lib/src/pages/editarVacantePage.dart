@@ -29,12 +29,12 @@ class _EditarVacantePageState extends State<EditarVacantePage> {
       'id': widget.lista[widget.index]['id'],
       'titulo': controllerTitulo.text,
       'descricion': controllerDescripcion.text,
-      'empresa': controllerDescripcion.text,
-      'telefono': controllerDescripcion.text,
-      'correo': controllerDescripcion.text,
-      'direccion': controllerDescripcion.text,
-      'nombrerh': controllerDescripcion.text,
-      'image': controllerDescripcion.text,
+      'empresa': controllerEmpresa.text,
+      'telefono': controllerTelefono.text,
+      'correo': controllerCorreo.text,
+      'direccion': controllerDireccion.text,
+      'nombrerh': controllerNombreRH.text,
+      'image': controllerImage.text,
     });
   }
 
@@ -54,6 +54,8 @@ class _EditarVacantePageState extends State<EditarVacantePage> {
         text: widget.lista[widget.index]['direccion']);
     controllerNombreRH =
         new TextEditingController(text: widget.lista[widget.index]['nombrerh']);
+    controllerImage =
+        new TextEditingController(text: widget.lista[widget.index]['image']);
 
     super.initState();
   }

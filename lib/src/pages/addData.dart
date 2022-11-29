@@ -127,11 +127,11 @@ class _AddDataState extends State<AddData> {
                         borderRadius: new BorderRadius.circular(30.0)),
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
+                        addData();
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => VistaHoracio()));
-                        addData();
                       }
                     },
                   ),
