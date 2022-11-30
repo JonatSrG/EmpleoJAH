@@ -37,9 +37,11 @@ class _DetallesVacanteState extends State<DetallesVacante> {
           color: Colors.red,
           onPressed: () {
             deleteData();
-            Navigator.of(context).push(new MaterialPageRoute(
-              builder: (BuildContext context) => new VistaAdminPage(),
-            ));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => VistaAdminPage(),
+                ));
           },
         ),
         new RaisedButton(
@@ -61,85 +63,86 @@ class _DetallesVacanteState extends State<DetallesVacante> {
         title: Text('Detalles de la vacante'),
         automaticallyImplyLeading: false,
       ),
-      body: Container(
-        height: 500,
-        padding: const EdgeInsets.all(20.0),
-        child: new Card(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          margin: EdgeInsets.all(10),
-          elevation: 10,
-          child: Center(
-            child: Column(
-              children: <Widget>[
-                ListTile(
-                  contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
-                  title: Text(
-                    "Titulo: " + widget.lista[widget.index]['titulo'] + "\n",
-                    style: new TextStyle(
-                        fontWeight: FontWeight.w400, fontSize: 18),
-                  ),
-                  subtitle: Text(
-                    "Descripcion: " +
-                        widget.lista[widget.index]['descricion'] +
-                        "\n" +
-                        "\n" +
-                        "Empresa: " +
-                        widget.lista[widget.index]['empresa'] +
-                        "\n" +
-                        "Telefono: " +
-                        widget.lista[widget.index]['telefono'] +
-                        "\n" +
-                        "Correo: " +
-                        widget.lista[widget.index]['correo'] +
-                        "\n" +
-                        "Dirección: " +
-                        widget.lista[widget.index]['direccion'] +
-                        "\n" +
-                        "RH: " +
-                        widget.lista[widget.index]['nombrerh'] +
-                        "\n",
-                    style: new TextStyle(
-                        fontWeight: FontWeight.w400, fontSize: 18),
-                  ),
+      body: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        margin: EdgeInsets.all(10),
+        elevation: 10,
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Image.network(
+                widget.lista[widget.index]['image'],
+                fit: BoxFit.cover, // Fixes border issues
+                width: 200,
+                height: 200,
+              ),
+              ListTile(
+                contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+                title: Text(
+                  "Titulo: " + widget.lista[widget.index]['titulo'] + "\n",
+                  style:
+                      new TextStyle(fontWeight: FontWeight.w400, fontSize: 18),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    MaterialButton(
-                      minWidth: 100.0,
-                      elevation: 10,
-                      height: 30.0,
-                      onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => EditarVacantePage(
-                            lista: widget.lista,
-                            index: widget.index,
-                          ),
+                subtitle: Text(
+                  "Descripcion: " +
+                      widget.lista[widget.index]['descricion'] +
+                      "\n" +
+                      "\n" +
+                      "Empresa: " +
+                      widget.lista[widget.index]['empresa'] +
+                      "\n" +
+                      "Telefono: " +
+                      widget.lista[widget.index]['telefono'] +
+                      "\n" +
+                      "Correo: " +
+                      widget.lista[widget.index]['correo'] +
+                      "\n" +
+                      "Dirección: " +
+                      widget.lista[widget.index]['direccion'] +
+                      "\n" +
+                      "RH: " +
+                      widget.lista[widget.index]['nombrerh'] +
+                      "\n",
+                  style:
+                      new TextStyle(fontWeight: FontWeight.w400, fontSize: 18),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  MaterialButton(
+                    minWidth: 100.0,
+                    elevation: 10,
+                    height: 30.0,
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => EditarVacantePage(
+                          lista: widget.lista,
+                          index: widget.index,
                         ),
                       ),
-                      color: Colors.orange[400],
-                      child: Text(
-                        'Editar',
-                        style: TextStyle(color: Colors.white),
-                      ),
                     ),
-                    MaterialButton(
-                      minWidth: 100.0,
-                      elevation: 10,
-                      height: 30.0,
-                      onPressed: () => confirm(),
-                      color: Colors.red[400],
-                      child: Text(
-                        'Eliminar',
-                        style: TextStyle(color: Colors.white),
-                      ),
+                    color: Colors.orange[400],
+                    child: Text(
+                      'Editar',
+                      style: TextStyle(color: Colors.white),
                     ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                  MaterialButton(
+                    minWidth: 100.0,
+                    elevation: 10,
+                    height: 30.0,
+                    onPressed: () => confirm(),
+                    color: Colors.red[400],
+                    child: Text(
+                      'Eliminar',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
