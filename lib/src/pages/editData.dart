@@ -107,6 +107,15 @@ class _EditDataState extends State<EditData> {
                         MaterialPageRoute(
                             builder: (context) => VistaHoracio()));
                   },
+                ),
+                RaisedButton(
+                  child: new Text("Salir"),
+                  color: Colors.orange,
+                  shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(30.0)),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 )
               ],
             ),

@@ -199,6 +199,15 @@ class _EditarVacantePageState extends State<EditarVacantePage> {
                         MaterialPageRoute(
                             builder: (context) => VistaAdminPage()));
                   },
+                ),
+                RaisedButton(
+                  child: new Text("Salir"),
+                  color: Colors.orange,
+                  shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(30.0)),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 )
               ],
             ),

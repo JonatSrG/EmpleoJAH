@@ -30,8 +30,8 @@ class _AddDataState extends State<AddData> {
   String _mySelection;
   List<Map> _myJson = [
     {"id": 0, "name": "Alumno"},
-    {"id": 1, "name": "Admin"},
-    {"id": 2, "name": "Vista"},
+    {"id": 1, "name": "Vacante"},
+    {"id": 2, "name": "Escolar"},
   ];
 
   @override
@@ -128,11 +128,11 @@ class _AddDataState extends State<AddData> {
                         borderRadius: new BorderRadius.circular(30.0)),
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
-                        addData();
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => VistaHoracio()));
+                        addData();
                       }
                     },
                   ),

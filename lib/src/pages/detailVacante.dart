@@ -46,71 +46,86 @@ class _DetailVacantesState extends State<DetailVacantes> {
         title: Text('Detalles de la vacante'),
         automaticallyImplyLeading: false,
       ),
-      body: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        margin: EdgeInsets.all(10),
-        elevation: 10,
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              Image.network(
-                widget.listas[widget.index]['image'],
-                fit: BoxFit.cover, // Fixes border issues
-                width: 200,
-                height: 200,
-              ),
-              ListTile(
-                contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
-                title: Text(
-                  "Titulo: " + widget.listas[widget.index]['titulo'] + "\n",
-                  style:
-                      new TextStyle(fontWeight: FontWeight.w400, fontSize: 18),
-                ),
-                subtitle: Text(
-                  "Descripcion: " +
-                      widget.listas[widget.index]['descricion'] +
-                      "\n" +
-                      "\n" +
-                      "Empresa: " +
-                      widget.listas[widget.index]['empresa'] +
-                      "\n" +
-                      "Telefono: " +
-                      widget.listas[widget.index]['telefono'] +
-                      "\n" +
-                      "Correo: " +
-                      widget.listas[widget.index]['correo'] +
-                      "\n" +
-                      "Dirección: " +
-                      widget.listas[widget.index]['direccion'] +
-                      "\n" +
-                      "RH: " +
-                      widget.listas[widget.index]['nombrerh'] +
-                      "\n",
-                  style:
-                      new TextStyle(fontWeight: FontWeight.w400, fontSize: 18),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+      body: ListView(
+        children: <Widget>[
+          Card(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            margin: EdgeInsets.all(10),
+            elevation: 10,
+            child: Center(
+              child: Column(
                 children: <Widget>[
-                  MaterialButton(
-                    minWidth: 100.0,
-                    elevation: 10,
-                    height: 30.0,
-                    onPressed: () {
-                      openwhatsapp();
-                    },
-                    color: Colors.green[400],
-                    child: Text(
-                      'Mas Informacion',
-                      style: TextStyle(color: Colors.white),
+                  Image.network(
+                    widget.listas[widget.index]['image'],
+                    fit: BoxFit.cover, // Fixes border issues
+                    width: 200,
+                    height: 200,
+                  ),
+                  ListTile(
+                    contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+                    title: Text(
+                      "Titulo: " + widget.listas[widget.index]['titulo'] + "\n",
+                      style: new TextStyle(
+                          fontWeight: FontWeight.w400, fontSize: 18),
                     ),
+                    subtitle: Text(
+                      "Descripcion: " +
+                          widget.listas[widget.index]['descricion'] +
+                          "\n" +
+                          "\n" +
+                          "Empresa: " +
+                          widget.listas[widget.index]['empresa'] +
+                          "\n" +
+                          "Telefono: " +
+                          widget.listas[widget.index]['telefono'] +
+                          "\n" +
+                          "Correo: " +
+                          widget.listas[widget.index]['correo'] +
+                          "\n" +
+                          "Dirección: " +
+                          widget.listas[widget.index]['direccion'] +
+                          "\n" +
+                          "RH: " +
+                          widget.listas[widget.index]['nombrerh'] +
+                          "\n",
+                      style: new TextStyle(
+                          fontWeight: FontWeight.w400, fontSize: 18),
+                    ),
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      MaterialButton(
+                        minWidth: 100.0,
+                        elevation: 10,
+                        height: 30.0,
+                        onPressed: () {
+                          openwhatsapp();
+                        },
+                        color: Colors.green[400],
+                        child: Text(
+                          'Mas Informacion',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      MaterialButton(
+                        minWidth: 100.0,
+                        elevation: 10,
+                        height: 30.0,
+                        child: new Text("Salir"),
+                        color: Colors.orange,
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      )
+                    ],
                   ),
                 ],
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

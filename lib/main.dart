@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         'vistaAdminPage': (BuildContext buildContext) => VistaAdminPage(),
         'vistaAlumnoPage': (BuildContext buildContext) => VistaAlumnoPage(),
-        'loginPage': (BuildContext buildContext) => VistaAlumnoPage(),
+        'loginPage': (BuildContext buildContext) => LoginPage(),
         'vistaHoracio': (BuildContext buildContext) => VistaHoracio(),
         'detail': (BuildContext buildContext) => Detail(),
       },

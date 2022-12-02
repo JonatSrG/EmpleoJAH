@@ -33,13 +33,13 @@ class _LoginPageState extends State<LoginPage> {
         mensaje = "Usuario o Contraseña son Incorrectas";
       });
     } else {
-      if (datauser[0]['role'] == 'Admin') {
+      if (datauser[0]['role'] == 'Vacante') {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => VistaAdminPage()));
       } else if (datauser[0]['role'] == 'Alumno') {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => VistaAlumnoPage()));
-      } else if (datauser[0]['role'] == 'Vista') {
+      } else if (datauser[0]['role'] == 'Escolar') {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => VistaHoracio()));
       }

@@ -140,6 +140,19 @@ class _DetallesVacanteState extends State<DetallesVacante> {
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
+                  MaterialButton(
+                    minWidth: 100.0,
+                    elevation: 10,
+                    height: 30.0,
+                    child: new Text(
+                      "Salir",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    color: Colors.orange,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
                 ],
               ),
             ],

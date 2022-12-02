@@ -33,9 +33,9 @@ class _DetailState extends State<Detail> {
           ),
           color: Colors.red,
           onPressed: () {
-            dataDelete();
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => VistaHoracio()));
+            dataDelete();
           },
         ),
         new RaisedButton(
@@ -106,6 +106,16 @@ class _DetailState extends State<Detail> {
                           borderRadius: new BorderRadius.circular(30.0)),
                       onPressed: () => confirm(),
                     ),
+                    VerticalDivider(),
+                    RaisedButton(
+                      child: new Text("SALIR"),
+                      color: Colors.orange,
+                      shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0)),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    )
                   ],
                 )
               ],
