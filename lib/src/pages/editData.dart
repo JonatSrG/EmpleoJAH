@@ -18,7 +18,7 @@ class _EditDataState extends State<EditData> {
   TextEditingController controllerRole;
 
   void dataEdit() {
-    var url = "http://192.168.0.108/empleo/editdata.php";
+    var url = "http://192.168.68.110/empleo/editdata.php";
     http.post(url, body: {
       "id": widget.list[widget.index]['id'],
       "username": controllerUsername.text,

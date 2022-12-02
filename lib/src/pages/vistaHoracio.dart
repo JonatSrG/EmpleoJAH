@@ -14,7 +14,7 @@ class VistaHoracio extends StatefulWidget {
 
 class _VistaHoracioState extends State<VistaHoracio> {
   Future<List> dataGet() async {
-    final response = await http.get('http://192.168.0.108/empleo/getdata.php');
+    final response = await http.get('http://192.168.68.110/empleo/getdata.php');
     return json.decode(response.body);
   }
 
