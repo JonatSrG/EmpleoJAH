@@ -15,7 +15,8 @@ class VistaAdminPage extends StatefulWidget {
 class _VistaAdminPageState extends State<VistaAdminPage> {
   //Metodo que llama el get de vacante
   Future<List> obtenerVacante() async {
-    final response = await http.get('http://192.168.68.110/empleo/dataget.php');
+    final response =
+        await http.get('http://192.168.137.107/empleo/dataget.php');
     return json.decode(response.body);
   }
 

@@ -1,5 +1,8 @@
 import 'dart:convert';
 
+import 'package:empleo_jah/src/pages/astridPerfil.dart';
+import 'package:empleo_jah/src/pages/jonaPerfil.dart';
+import 'package:empleo_jah/src/pages/horacioPerfil.dart';
 import 'package:empleo_jah/src/pages/vistaAdminPage.dart';
 import 'package:empleo_jah/src/pages/vistaAlumnoPage.dart';
 import 'package:empleo_jah/src/pages/vistaHoracio.dart';
@@ -21,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
 //metdo para saber que usuario se va estar logiando
   Future<List> login() async {
     final response =
-        await http.post('http://192.168.68.110/empleo/login.php', body: {
+        await http.post('http://192.168.137.107/empleo/login.php', body: {
       "username": controllerUser.text,
       "password": controllerPass.text,
     });
@@ -60,7 +63,53 @@ class _LoginPageState extends State<LoginPage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.help),
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('Perfiles'),
+                      content: Stack(
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              Expanded(
+                                child: GestureDetector(
+                                  onTap: () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => JonaPerfil())),
+                                  child: Image.asset('assets/jona.jpg'),
+                                ),
+                              ),
+                              Expanded(
+                                child: GestureDetector(
+                                  onTap: () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              HoracioPerfil())),
+                                  child: Image.asset('assets/horacio.jpeg'),
+                                ),
+                              ),
+                              Expanded(
+                                child: GestureDetector(
+                                  onTap: () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              AstridPerfil())),
+                                  child: Image.asset('assets/jona.jpg'),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  });
+            },
           ),
         ],
       ),

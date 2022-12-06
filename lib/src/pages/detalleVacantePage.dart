@@ -17,7 +17,7 @@ class DetallesVacante extends StatefulWidget {
 
 class _DetallesVacanteState extends State<DetallesVacante> {
   void deleteData() {
-    var url = "http://192.168.68.110/empleo/deletevacante.php";
+    var url = "http://192.168.137.107/empleo/deletevacante.php";
     http.post(url, body: {'id': widget.lista[widget.index]['id']});
   }
 
