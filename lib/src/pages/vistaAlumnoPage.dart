@@ -17,7 +17,7 @@ class VistaAlumnoPage extends StatefulWidget {
 class _VistaAlumnoPageState extends State<VistaAlumnoPage> {
   Future<List> dataVacante() async {
     final response =
-        await http.get('http://192.168.137.107/empleo/dataget.php');
+        await http.get('http://192.168.245.110/empleo/dataget.php');
     return json.decode(response.body);
   }
 

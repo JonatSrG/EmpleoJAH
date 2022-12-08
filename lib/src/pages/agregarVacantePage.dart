@@ -20,7 +20,7 @@ class _AgregarVacanteState extends State<AgregarVacante> {
   var _formKey = GlobalKey<FormState>();
 
   void agregarVacante() {
-    var url = "http://192.168.137.107/empleo/addvacante.php";
+    var url = "http://192.168.245.110/empleo/addvacante.php";
     http.post(url, body: {
       "titulo": controllerTitulo.text,
       "descricion": controllerDescripcion.text,

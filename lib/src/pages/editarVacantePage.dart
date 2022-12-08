@@ -24,7 +24,7 @@ class _EditarVacantePageState extends State<EditarVacantePage> {
   TextEditingController controllerImage;
 
   void editarVacante() {
-    var url = "http://192.168.137.107/empleo/editvacante.php";
+    var url = "http://192.168.245.110/empleo/editvacante.php";
     http.post(url, body: {
       'id': widget.lista[widget.index]['id'],
       'titulo': controllerTitulo.text,

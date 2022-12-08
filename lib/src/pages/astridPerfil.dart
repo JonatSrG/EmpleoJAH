@@ -10,7 +10,7 @@ class AstridPerfil extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text("Jonathan Galindo González"),
+          title: Text("Astrid Deyadira González Loaiza"),
           leading: IconButton(
             icon: Icon(Icons.logout),
             onPressed: () {
@@ -30,7 +30,7 @@ class AstridPerfil extends StatelessWidget {
               elevation: 10,
               child: Column(
                 children: <Widget>[
-                  Image.asset('assets/jona.jpg'),
+                  Image.asset('assets/yadira.jpg'),
                   ListTile(
                     contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
                     title: Text('T.S.U Jonathan Galindo González'),
