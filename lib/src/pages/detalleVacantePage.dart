@@ -17,7 +17,7 @@ class DetallesVacante extends StatefulWidget {
 
 class _DetallesVacanteState extends State<DetallesVacante> {
   void deleteData() {
-    var url = "http://192.168.245.110/empleo/deletevacante.php";
+    var url = "http://192.168.0.111/empleo/deletevacante.php";
     http.post(url, body: {'id': widget.lista[widget.index]['id']});
   }
 
@@ -74,7 +74,6 @@ class _DetallesVacanteState extends State<DetallesVacante> {
                 widget.lista[widget.index]['image'],
                 fit: BoxFit.cover, // Fixes border issues
                 width: 200,
-                height: 200,
               ),
               ListTile(
                 contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),

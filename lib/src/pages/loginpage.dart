@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
 //metdo para saber que usuario se va estar logiando
   Future<List> login() async {
     final response =
-        await http.post('http://192.168.245.110/empleo/login.php', body: {
+        await http.post('http://192.168.0.111/empleo/login.php', body: {
       "username": controllerUser.text,
       "password": controllerPass.text,
     });

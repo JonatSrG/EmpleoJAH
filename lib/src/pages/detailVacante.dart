@@ -60,7 +60,6 @@ class _DetailVacantesState extends State<DetailVacantes> {
                     widget.listas[widget.index]['image'],
                     fit: BoxFit.cover, // Fixes border issues
                     width: 200,
-                    height: 200,
                   ),
                   ListTile(
                     contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
