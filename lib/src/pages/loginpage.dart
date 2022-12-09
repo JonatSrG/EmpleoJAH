@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: Text('Perfiles'),
+                      title: Text('Developers', textAlign: TextAlign.center),
                       content: Stack(
                         children: <Widget>[
                           Row(
@@ -76,12 +76,12 @@ class _LoginPageState extends State<LoginPage> {
                             children: <Widget>[
                               Expanded(
                                 child: GestureDetector(
-                                  onTap: () => Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => JonaPerfil())),
-                                  child: Image.asset('assets/jona.jpg'),
-                                ),
+                                    onTap: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                JonaPerfil())),
+                                    child: Image.asset('assets/jona.jpg')),
                               ),
                               Expanded(
                                 child: GestureDetector(

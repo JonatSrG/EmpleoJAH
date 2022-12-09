@@ -33,7 +33,7 @@ class AstridPerfil extends StatelessWidget {
                   Image.asset('assets/yadira.jpg'),
                   ListTile(
                     contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
-                    title: Text('T.S.U Jonathan Galindo González'),
+                    title: Text('T.S.U Astrid Deyadira González Loaiza'),
                     subtitle: Text(
                         'Cursando 10° cuatrimestre de la carrera de ingeneria en tecnologias de la informacion area desarrollo y gestion de software'),
                     leading: Icon(Icons.verified_user_outlined),
@@ -66,7 +66,7 @@ class AstridPerfil extends StatelessWidget {
                   ListTile(
                     contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
                     title: Text('Lenguajes dominados'),
-                    subtitle: Text('JavaScrip-Java-Dart'),
+                    subtitle: Text('JavaScrip-Java-PHP'),
                     leading: Icon(Icons.code),
                   ),
                 ],
